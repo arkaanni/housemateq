@@ -1,0 +1,53 @@
+body {
+    background-color: #ecf0f1;
+}
+
+.text-custom {
+    font-size: 18px;
+}
+
+nav {
+    box-shadow: 0 2px 2px grey;
+    border: none !important;
+}
+
+.navbar-inverse {
+    background-color: #2c3e50;
+}
+
+.wishlist {
+    /*border: none;*/
+    background-color: #27ae60;
+    /*color: #fff;*/
+    padding: 1em;
+    margin: inherit;
+    width: inherit;
+    /*box-shadow: 0 2px 2px grey;*/
+}
+
+#wishlist-container {
+    background-color: #fff;
+    /*padding: 0;
+    margin: 0;*/
+    height: 300px;
+    box-shadow: 0 0 5px 0 grey;
+}
+
+.carousel-inner {
+    box-shadow: 0 0 5px 0 grey;
+}
+
+input[name='btn_masuk_wishlist'] {
+    background-color: #FF4081;
+    box-shadow: 0 1px 2px grey;
+    border: none;
+    width: 100%;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.jumbotron {
+    color: rgba(55, 71, 79,1.0);
+}
