@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Thread;
+use App\Models\Wishlist;
 
 class ThreadController extends Controller
 {
@@ -47,8 +48,9 @@ class ThreadController extends Controller
 
     public function lihatThread($id)
     {
-        $thread = Thread::find($id);
-        return view('layouts.thread.thread_detail', ['thread' => $thread]);
+        $thread = Thread::find($id)->with('wishlist')->first();
+        $wishlist = Wishlist::where('thread_id', $id)->with('user')->get();
+        return view('layouts.thread.thread_detail', ['thread' => $thread, 'wishlist' => $wishlist]);
     }
 
     public function allThread()

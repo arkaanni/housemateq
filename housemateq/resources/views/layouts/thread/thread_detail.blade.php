@@ -43,31 +43,18 @@
                           </a>
                         </div>
                     </div>
-                    <div class="col-md-4" id="wishlist-container">
+                    <div class="col-md-4" id="wishlist-container" style="overflow: auto;">
                         {{-- <h5 class="text-center">Wishlist</h5> --}}
                         <table class="table">
                             <thead>
                                 <th class="text-center">Wishlist</th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td> <a href="#">argaergafbgyuar</a> </td>
-                                </tr>
-                                <tr>
-                                    <td> <a href="#">argaergafbgyuar</a> </td>
-                                </tr>
-                                <tr>
-                                    <td> <a href="#">argaergafbgyuar</a> </td>
-                                </tr>
-                                <tr>
-                                    <td> <a href="#">argaergafbgyuar</a> </td>
-                                </tr>
-                                <tr>
-                                    <td> <a href="#">argaergafbgyuar</a> </td>
-                                </tr>
-                                <tr>
-                                    <td> <a href="#">argaergafbgyuar</a> </td>
-                                </tr>
+                                @foreach ($wishlist as $t)
+                                    <tr>
+                                        <td> <a href="#">{{ $t->user->name }}</a> </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -77,10 +64,27 @@
                     </div>
                     <div class="col-md-4" style="padding: 0">
                         <br>
-                        <input class="btn btn-primary" type="button" name="btn_masuk_wishlist" value="Masuk Wishlist">
+                        <form action="{{ url('/api/thread/'.$thread->id.'/daftar-wishlist') }}" method="post">
+                            {{ csrf_field() }}
+                            <input class="btn btn-primary" type="submit" name="btn_masuk_wishlist" value="Masuk Wishlist">
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                        </form>
                     </div>
                     <div class="col-md-8">
-                        
+                        @foreach ($thread->komentar as $k)
+                            <p>{{ $k->value }}</p>
+                        @endforeach
+                        <div class="container">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <form class="" action="{{ url('/api/thread/'. $thread->id. '/kirim-komentar') }}" method="post">
+                            <input class="form-control input-lg" type="text" name="komentar" placeholder="Berikan komentar Anda..">
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <br>
+                            <input class="btn btn-primary" type="submit" value="Kirim">
+                        </form>
                     </div>
                 </div>
             </div>

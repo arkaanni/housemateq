@@ -2,6 +2,10 @@ body {
     background-color: #ecf0f1;
 }
 
+#app {
+    margin-bottom: 50px;
+}
+
 .text-custom {
     font-size: 18px;
 }
@@ -49,5 +53,24 @@ input[name='btn_masuk_wishlist'] {
 }
 
 .jumbotron {
-    color: rgba(55, 71, 79,1.0);
+    background-image: url('/images/housemate_q/background.jpg');
+    background-position: left top;
+    background-color: rgba(207, 216, 220,1.0);
+    height: 85vh;
+}
+
+.page-header {
+
+}
+
+.footer {
+    /*position: absolute;
+    bottom: 0;*/
+    height: 50px;
+    width: 100%;
+    background-color: #2c3e50;
+}
+
+.copyright {
+    padding-top: 1em;
 }

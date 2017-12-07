@@ -16,12 +16,14 @@
 </head>
 <body>
     <div id="app">
-        <p>{{ csrf_token() }}</p>
+        {{-- <p>{{ csrf_token() }}</p> --}}
         @yield('content')
-    </div>
 
+    </div>
+    @include('layouts.footer')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('js/smoothscroll.js') }}" charset="utf-8"></script>
+    {{-- <script src="{{ asset('js/modernizr.min.js') }}"></script> --}}
 </body>
 </html>

@@ -13,4 +13,9 @@ class Wishlist extends Model
     {
         return $this->belongsTo('App\Models\Thread', 'thread_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

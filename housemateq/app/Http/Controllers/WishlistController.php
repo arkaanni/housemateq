@@ -24,13 +24,13 @@ class WishlistController extends Controller
     /**
      * @param Request $request
      */
-    public function daftarWishlist(Request $request)
+    public function daftarWishlist($id, Request $request)
     {
         $wishlist = Wishlist::create([
-            'thread_id' => $request->thread_id,
+            'thread_id' => $id,
             'user_id'   => $request->user_id
         ]);
 
-        return $wishlist->toJson();
+        // return $wishlist->toJson();
     }
 }

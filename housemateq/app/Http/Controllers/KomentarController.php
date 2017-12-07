@@ -13,10 +13,10 @@ class KomentarController extends Controller
 
     }
 
-    public function addKomentar(Request $request)
+    public function addKomentar($id, Request $request)
     {
         Komentar::create([
-            'thread_id' => $request->thread_id,
+            'thread_id' => $id,
             'user_id'   => $request->user_id,
             'value'     => $request->komentar
         ]);
