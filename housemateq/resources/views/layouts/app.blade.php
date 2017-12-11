@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $title or config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -18,12 +18,15 @@
     <div id="app">
         {{-- <p>{{ csrf_token() }}</p> --}}
         @yield('content')
-
     </div>
-    @include('layouts.footer')
+
+    @yield('footer')
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/smoothscroll.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('js/jquery.smooth-scroll.min.js') }}"></script>
     {{-- <script src="{{ asset('js/modernizr.min.js') }}"></script> --}}
+
+    @yield('script')
 </body>
 </html>

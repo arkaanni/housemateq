@@ -18,6 +18,7 @@ class CreateThreadTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('judul');
             $table->text('deskripsi');
+            $table->double('harga');
             $table->smallInteger('kategori');
             $table->smallInteger('status')->default(0);
             $table->timestamps();

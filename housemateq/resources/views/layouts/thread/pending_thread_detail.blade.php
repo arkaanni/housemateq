@@ -62,7 +62,7 @@
                         <h3>Deskripsi</h3>
                         <p class="caption">{{ $thread->deskripsi }}</p>
                     </div>
-                    <div class="col-md-4" style="padding: 0">
+                    {{-- <div class="col-md-4" style="padding: 0">
                         <br>
                         <form action="{{ url('/api/thread/'.$thread->id.'/daftar-wishlist') }}" method="post">
                             {{ csrf_field() }}
@@ -92,6 +92,17 @@
                             <h4 class="text-muted">Login untuk memberikan komentar.</h4>
                             <br>
                             <input class="btn btn-primary" type="submit" value="Kirim">
+                        </form>
+                    </div> --}}
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <form class="form" action="{{ url('api/thread/validasi') }}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="id" value="{{ $thread->id }}">
+                            <input class="btn btn-primary input-lg" type="submit" name="validasi" value="Validasi">
+                            <input class="btn btn-danger input-lg" type="submit" name="validasi" value="Tolak">
                         </form>
                     </div>
                 </div>

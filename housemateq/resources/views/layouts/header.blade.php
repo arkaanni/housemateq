@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-static-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
 
@@ -51,11 +51,29 @@
 
                 @else
                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"> <span class="glyphicon glyphicon-bell"></span> </a>
+
+                        <ul class="dropdown-menu">
+                            <li> <a href="#">waefnawjel</a> </li>
+                            <li> <a href="#">waefnawjel</a> </li>
+                            <li> <a href="#">waefnawjel</a> </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu">
+                            @if (Auth::user()->role == '0')
+                                <li>
+                                    <a href="{{ url('member') }}">Member</a>
+                                </li>
+                            @elseif (Auth::user()->role == '1')
+                                <li>
+                                    <a href="{{ url('admin') }}">Admin</a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
