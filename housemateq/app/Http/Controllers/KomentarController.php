@@ -20,6 +20,8 @@ class KomentarController extends Controller
             'user_id'   => $request->user_id,
             'value'     => $request->komentar
         ]);
+
+        return redirect(url()->previous());
     }
 
     public function getKomentar($threadId)
@@ -27,5 +29,12 @@ class KomentarController extends Controller
         $komentar = Komentar::find($threadId);
 
         return $komentar;
+    }
+
+    public function hapusKomentar($id)
+    {
+        $komentar = Komentar::find($id)->delete();
+
+        return redirect('admin');
     }
 }

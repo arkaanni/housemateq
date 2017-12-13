@@ -13,8 +13,13 @@
 
 Route::get('/', function () {
     $title = 'Housemate Q - Cari Teman Kontrakan Online';
-    $thread = App\Models\Thread::all();
-    return view('home', ['title' => $title, 'thread' => $thread]);
+    $thread = App\Models\Thread::where('status', 1)->get();
+    $notifikasi = null;
+    if (Auth::user()) {
+        $notifikasi = App\Models\Notifikasi::where('user_id', Auth::user()->id)->get();
+    }
+
+    return view('home', ['title' => $title, 'thread' => $thread, 'notifikasi' => $notifikasi]);
 });
 
 Auth::routes();
@@ -23,6 +28,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/thread/create', 'ThreadController@create');
 Route::get('/thread/{id}', 'ThreadController@lihatThread');
+Route::get('/cari/{keyword}', 'ThreadController@cari');
 
 Route::get('/member', 'AccountController@index');
 

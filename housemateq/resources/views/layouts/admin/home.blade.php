@@ -40,7 +40,9 @@
                                         <td>{{ $t->id }}</td>
                                         <td>{{ $t->judul }}</td>
                                         <td>{{ $t->deskripsi }}</td>
-                                        <td>{{ $t->status }}</td>
+                                        @if ($t->status == 0)
+                                            <td>Pending</td>
+                                        @endif
                                         <td><a href="{{ url('pending/'. $t->id) }}" class="btn btn-primary">Lihat</a></td>
                                     </tr>
                                 @endforeach
@@ -52,6 +54,29 @@
                     </div>
                     <div id="komentar" class="tab-pane fade">
                         <h2>Komentar</h2>
+                        <table class="table">
+                            <thead>
+                                <th>Id</th>
+                                <th>Thread Id</th>
+                                <th>User Id</th>
+                                <th>Komentar</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($komentar as $k)
+                                    <tr>
+                                        <td>{{ $k->id }}</td>
+                                        <td>{{ $k->thread_id }}</td>
+                                        <td>{{ $k->user_id }}</td>
+                                        <td>{{ $k->value }}</td>
+                                        <td>
+                                            <form class="form" action="{{ url('api/komentar/'. $k->id .'/hapus') }}" method="post">
+                                                <input class="btn btn-danger" type="submit" name="hapus_komentar" value="Hapus">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

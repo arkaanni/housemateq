@@ -19,9 +19,9 @@
         <div class="container">
             <div class="row" id="main">
                 @foreach ($thread as $t)
-                    @if ($t->status == 1)
+                    @if ($t)
                         <div class="col-md-4">
-                            <a href="#" class="thumbnail">
+                            <a href="{{ url('thread/'. $t->id) }}" class="thumbnail">
                               <img src="{{asset('images/housemate_q/desain-rumah-kontrakan-kost-petak.jpg')}}" alt="">
                             </a>
 

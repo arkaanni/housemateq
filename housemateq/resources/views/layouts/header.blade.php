@@ -54,9 +54,14 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"> <span class="glyphicon glyphicon-bell"></span> </a>
 
                         <ul class="dropdown-menu">
-                            <li> <a href="#">waefnawjel</a> </li>
-                            <li> <a href="#">waefnawjel</a> </li>
-                            <li> <a href="#">waefnawjel</a> </li>
+                            @if ($notifikasi)
+                                @foreach ($notifikasi as $notif)
+                                    <li>
+                                        <h4> {{ $notif->id }} </h4>
+                                        <p> {{ $notif->message }} </p>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                     </li>
                     <li class="dropdown">
