@@ -22,18 +22,18 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filter <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li> <a href="#">Mewah</a> </li>
-                        <li> <a href="#">Luas</a> </li>
-                        <li> <a href="#">Minimalis</a> </li>
-                        <li> <a href="#">Sederhana</a> </li>
-                        <li> <a href="#">Kecil</a> </li>
+                        <li> <a href="{{ url('/kategori/mewah') }}">Mewah</a> </li>
+                        <li> <a href="{{ url('/kategori/luas') }}">Luas</a> </li>
+                        <li> <a href="{{ url('/kategori/minimalis') }}">Minimalis</a> </li>
+                        <li> <a href="{{ url('/kategori/sederhana') }}">Sederhana</a> </li>
+                        <li> <a href="{{ url('/kategori/kecil') }}">Kecil</a> </li>
                     </ul>
                 </li>
 
                 <li>
-                    <form class="navbar-form" role="search" action="/cari">
+                    <form class="navbar-form" role="search" action="/cari" method="GET">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="q" style="min-width: 100%; width: 300px;">
+                            <input type="text" class="form-control" placeholder="Cari.." name="q" style="min-width: 100%; width: 300px;">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                             </div>

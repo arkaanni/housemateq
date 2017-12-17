@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Thread;
 use App\Models\Wishlist;
+use Auth;
 
 class WishlistController extends Controller
 {
@@ -26,11 +27,27 @@ class WishlistController extends Controller
      */
     public function daftarWishlist($id, Request $request)
     {
-        $wishlist = Wishlist::create([
-            'thread_id' => $id,
-            'user_id'   => $request->user_id
-        ]);
+        $user = Auth::user();
 
-        // return $wishlist->toJson();
+        if ($user) {
+            $thread = Thread::find($id);
+            // dd($thread);
+
+            if ($thread) {
+                $wishlist = Wishlist::create([
+                    'thread_id' => $id,
+                    'user_id'   => $user->id,
+                ]);
+
+                $user->status = $request->status;
+                $user->save();
+
+                $thread->sisa_wishlist = $thread->sisa_wishlist - 1;
+                $thread->save();
+            }
+            return redirect(url()->previous());
+        } else {
+            abort(404);
+        }
     }
 }

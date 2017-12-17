@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password',
+        'name', 'username', 'email', 'password', 'informasi_diri', 'usia', 'alamat'
     ];
 
     /**
@@ -30,5 +30,10 @@ class User extends Authenticatable
     public function wishlist()
     {
         return $this->hasOne('App\Models\Wishlist');
+    }
+
+    public function thread()
+    {
+        return $this->hasMany('App\Models\Thread');
     }
 }

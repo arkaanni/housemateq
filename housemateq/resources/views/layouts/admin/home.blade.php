@@ -16,7 +16,7 @@
                     <li> <a href="#komentar" data-toggle="tab"> Komentar </a> </li>
                 </ul>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="tab-content">
                     <div id="wishlist" class="tab-pane fade in active">
                         <h2>Wishlist</h2>
@@ -69,7 +69,7 @@
                                         <td>{{ $k->user_id }}</td>
                                         <td>{{ $k->value }}</td>
                                         <td>
-                                            <form class="form" action="{{ url('api/komentar/'. $k->id .'/hapus') }}" method="post">
+                                            <form class="form" action="{{ url('komentar/'. $k->id .'/hapus') }}" method="post">
                                                 <input class="btn btn-danger" type="submit" name="hapus_komentar" value="Hapus">
                                             </form>
                                         </td>

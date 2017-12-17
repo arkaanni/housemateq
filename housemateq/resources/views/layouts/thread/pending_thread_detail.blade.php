@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -62,49 +63,62 @@
                         <h3>Deskripsi</h3>
                         <p class="caption">{{ $thread->deskripsi }}</p>
                     </div>
-                    {{-- <div class="col-md-4" style="padding: 0">
-                        <br>
-                        <form action="{{ url('/api/thread/'.$thread->id.'/daftar-wishlist') }}" method="post">
-                            {{ csrf_field() }}
-                            @if (Auth::user())
-                                <input class="btn btn-primary" type="submit" name="btn_masuk_wishlist" value="Masuk Wishlist">
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                            @else
-                                <h4 class="text-muted">And harus login terlebih dahulu.</h4>
-                            @endif
-                        </form>
-                    </div>
-                    <div class="col-md-8">
-                        @foreach ($thread->komentar as $k)
-                            <p>{{ $k->value }}</p>
-                        @endforeach
-                        <div class="container">
-                            <p></p>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <form class="" action="{{ url('/api/thread/'. $thread->id. '/kirim-komentar') }}" method="post">
-                            {{ csrf_field() }}
-                            @if (Auth::user())
-                                <input class="form-control input-lg" type="text" name="komentar" placeholder="Berikan komentar Anda..">
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                            @endif
-                            <h4 class="text-muted">Login untuk memberikan komentar.</h4>
-                            <br>
-                            <input class="btn btn-primary" type="submit" value="Kirim">
-                        </form>
-                    </div> --}}
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        <form class="form" action="{{ url('api/thread/validasi') }}" method="post">
+                        {{-- <form class="form" action="{{ url('api/thread/validasi') }}" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{ $thread->id }}">
-                            <input class="btn btn-primary input-lg" type="submit" name="validasi" value="Validasi">
-                            <input class="btn btn-danger input-lg" type="submit" name="validasi" value="Tolak">
-                        </form>
+
+                            <input class="btn btn-primary" type="submit" name="validasi" value="Validasi">
+                            <input class="btn btn-primary" type="submit" name="validasi" value="Tolak">
+                        </form> --}}
+                        <button id="pilih-valid" type="button" class="btn btn-primary btn-lg" data-target="#modal-validasi" data-toggle="modal">Validasi</button>
+                        <button id="pilih-valid" type="button" class="btn btn-danger btn-lg" data-target="#modal-tolak" data-toggle="modal">Tolak</button>
                     </div>
+                </div>
+                <div class="modal fade" id="modal-validasi" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="validasi-title"></h4>
+                      </div>
+                      <div class="modal-body">
+                          <h4>Anda yakin thread ini divalidasi dan dipublikasikan?</h4>
+                      </div>
+                      <div class="modal-footer">
+                        <form class="form" action="{{ url('thread/validasi') }}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="id" value="{{ $thread->id }}">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <input id="validasi" class="btn btn-primary" type="submit" name="validasi" value="Validasi">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" id="modal-tolak" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="validasi-title"></h4>
+                      </div>
+                      <div class="modal-body">
+                          <h4>Anda yakin akan menolak dan menghapus thread?</h4>
+                      </div>
+                      <div class="modal-footer">
+                        <form class="form" action="{{ url('thread/validasi') }}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="id" value="{{ $thread->id }}">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <input id="validasi" class="btn btn-primary" type="submit" name="validasi" value="Tolak">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>

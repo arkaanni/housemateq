@@ -18,4 +18,9 @@ class Thread extends Model
     {
         return $this->hasMany('App\Models\Komentar');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

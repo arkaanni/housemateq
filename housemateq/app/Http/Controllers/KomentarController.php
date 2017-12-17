@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Thread;
 use App\Models\Komentar;
+use Auth;
 
 class KomentarController extends Controller
 {
@@ -26,6 +27,7 @@ class KomentarController extends Controller
 
     public function getKomentar($threadId)
     {
+        dd(Auth::check());
         $komentar = Komentar::find($threadId);
 
         return $komentar;

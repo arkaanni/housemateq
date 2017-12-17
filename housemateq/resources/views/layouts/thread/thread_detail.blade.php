@@ -47,7 +47,7 @@
                         {{-- <h5 class="text-center">Wishlist</h5> --}}
                         <table class="table">
                             <thead>
-                                <th class="text-center">Wishlist</th>
+                                <th class="text-center">Wishlist <h5>(Tersisa {{ $thread->sisa_wishlist }} slot wishlist tersisa.)</h5> </th>
                             </thead>
                             <tbody>
                                 @foreach ($wishlist as $t)
@@ -70,19 +70,44 @@
                     </div>
                     <div class="col-md-4" style="padding: 0">
                         <br>
-                        <form action="{{ url('/api/thread/'.$thread->id.'/daftar-wishlist') }}" method="post">
-                            {{ csrf_field() }}
-                            @if (Auth::user())
-                                @if (Auth::user()->role == 1)
-                                    <p class="text-muted text-center">Admin tidak bisa masuk wishlist.</p>
-                                @else
-                                    <input class="btn btn-primary" type="submit" name="btn_masuk_wishlist" value="Masuk Wishlist">
-                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                @endif
+                        @if (Auth::user())
+                            @if (Auth::user()->role == 1)
+                                <p class="text-muted text-center">Admin tidak bisa masuk wishlist.</p>
                             @else
-                                <h4 class="text-muted">Anda harus <a href="{{ url('login') }}"> Login </a>s terlebih dahulu.</h4>
+                                @if (Auth::user()->status == 1)
+                                    <button class="btn btn-primary" type="button" name="btn_masuk_wishlist" data-toggle="modal" data-target="#modal-wishlist" disabled>Masuk Wishlist</button>
+                                    <h5 class="text-muted">Anda sedang berada dalam Wishlist, periksa lagi akun anda.</h5>
+                                @elseif ($thread->user_id == Auth::user()->id)
+                                    <h5 class="text-muted">Anda tidak bisa masuk ke wishlist dalam thread Anda sendiri.</h5>
+                                @else
+                                    <button class="btn btn-primary" type="button" name="btn_masuk_wishlist" data-toggle="modal" data-target="#modal-wishlist">Masuk Wishlist</button>
+
+                                    <div class="modal fade" id="modal-wishlist" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id=""></h4>
+                                          </div>
+                                          <div class="modal-body">
+                                            <h4>Anda yakin ingin masuk ke dalam wishlist?</h4>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <form action="{{ url('thread/'.$thread->id.'/daftar-wishlist') }}" method="post">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="status" value="1">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <input type="submit" class="btn btn-primary" value="Ya">
+                                            </form>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                @endif
                             @endif
-                        </form>
+                        @else
+                            <h4 class="text-muted">Anda harus <a href="{{ url('login') }}"> Login </a>s terlebih dahulu.</h4>
+                        @endif
                     </div>
                     <div class="col-md-8">
 
@@ -96,7 +121,7 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <form class="" action="{{ url('/api/thread/'. $thread->id. '/kirim-komentar') }}" method="post">
+                        <form class="" action="{{ url('thread/'. $thread->id. '/kirim-komentar') }}" method="post">
                             {{ csrf_field() }}
                             @if (Auth::user())
                                 <textarea class="form-control input-lg" type="text" name="komentar" placeholder="Berikan komentar Anda.." style="resize: none"></textarea>
