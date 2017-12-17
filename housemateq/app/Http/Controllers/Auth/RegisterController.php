@@ -53,9 +53,6 @@ class RegisterController extends Controller
             'username' => 'required|string|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'informasi_diri' => 'required|min:6',
-            'alamat' => 'required',
-            'usia' => 'required',
         ]);
     }
 

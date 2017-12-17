@@ -50,3 +50,6 @@ Route::post('/thread/{id}/daftar-wishlist', 'WishlistController@daftarWishlist')
 Route::post('/thread/{id}/kirim-komentar', 'KomentarController@addKomentar');
 Route::get('/thread/{id}/komentar', 'KomentarController@getKomentar');
 Route::post('/komentar/{id}/hapus', 'KomentarController@hapusKomentar');
+
+Route::get('/pembayaran/{wishlist_id}', 'PembayaranController@index');
+Route::post('/bayar/{wishlist_id}', 'PembayaranController@bayar');

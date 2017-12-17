@@ -30,7 +30,7 @@ class ThreadController extends Controller
             'max_wishlist'  => 'required'
         ]);
 
-        
+
 
         Thread::create([
             'user_id'       => $request->user_id,
@@ -120,7 +120,7 @@ class ThreadController extends Controller
 
             $thread->save();
 
-            return redirec('admin');
+            return redirect('admin');
 
         } else {
             return redirect('home');

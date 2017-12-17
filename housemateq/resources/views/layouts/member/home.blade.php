@@ -55,7 +55,8 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <a href="{{ url('/thread/'. $wishlist->thread->id) }}" class="btn btn-primary">Lihat</a>
+                                            <a href="{{ url('/thread/'. $wishlist->thread->id) }}" class="btn btn-default">Lihat</a>
+                                            <a href="{{ url('/pembayaran/'. $wishlist->id) }}" class="btn btn-primary">Bayar Online</a>
                                         </div>
                                     </div>
                                 </div>

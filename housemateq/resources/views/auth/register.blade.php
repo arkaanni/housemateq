@@ -86,19 +86,19 @@
                                     <div class="form-group">
                                         <div class="col-md-11" style="margin-top: 4em;">
                                             <label>Data Diri</label>
-                                            <textarea class="form-control input-sm" name="informasi_diri" required autofocus placeholder="Hobi, kesukaan, dan lain-lain.." style="resize: none;" rows="5"></textarea>
+                                            <textarea class="form-control input-sm" name="informasi_diri" autofocus placeholder="Hobi, kesukaan, dan lain-lain.." style="resize: none;" rows="5"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-11">
-                                            <input class="form-control input-sm" type="number" name="usia" placeholder="Usia" required>
+                                            <input class="form-control input-sm" type="number" name="usia" placeholder="Usia">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-11">
-                                            <textarea class="form-control input-sm" type="text" name="alamat" placeholder="Alamat" style="resize: none" required></textarea>
+                                            <textarea class="form-control input-sm" type="text" name="alamat" placeholder="Alamat" style="resize: none"></textarea>
                                         </div>
                                     </div>
                                 </div>
